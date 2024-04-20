@@ -1,12 +1,18 @@
 from SpeechToText import SpeechToText
 from TextToSpeech import TextToSpeech
 from Utilities import *
+from gpt_response1 import gpt_response
+from g4f.client import Client
+
+
 
 
 def main():
     stt = SpeechToText()
     tts = TextToSpeech()
-    
+    client = Client()
+
+
     while True:
         try:
             text = stt.listen_and_write()
@@ -30,7 +36,8 @@ def main():
             
         elif "calculator" in text:
             open_calculator()
-        elif "you tube" or "youtube" in text:
+        elif "you tube" in text or "youtube" in text:
+
             query = text.lower().replace("you tube","").replace("youtube","")
             tts.tospeech("Searching for " + query + " on the YouTube")
             search_on_youtube(query)
@@ -43,11 +50,19 @@ def main():
         
         elif "close" in text:
             break
-        elif "bing"or"being" in text:
+        elif "bing" in text or "being" in text:
             query = text.lower().replace("on bing","").replace("bing","")
             tts.tospeech("Searching for " + query + " on the browser  Bing")
             search_on_bing(query)
-        
+        else:
+            tts.tospeech("Let me search for that.")
+            gpt_prompt = "What can you tell me about do not include ** in any sentence give only a paragraph " + text
+            response = gpt_response(gpt_prompt,client)
+            print(response)
+            tts.tospeech(response)
+            
+
+
 
         
 
