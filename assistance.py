@@ -3,7 +3,7 @@ from TextToSpeech import TextToSpeech
 from Utilities import *
 from gpt_response1 import gpt_response
 from g4f.client import Client
-
+from youtube_search import get_youtube_video_link
 
 
 
@@ -27,8 +27,8 @@ def main():
 
         if "google" in text:
             tts.tospeech("Opening google.com")
-            #  open_website("https://www.google.com")
-            # if "on google" in text:
+       #  open_website("https://www.google.com")
+       #  if "on google" in text:     
             
             query = text.lower().replace("on google","").replace("google","")
             tts.tospeech("Searching for " + query + " on Google")
@@ -36,6 +36,15 @@ def main():
             
         elif "calculator" in text:
             open_calculator()
+        elif "play" in text:
+            query = text.lower().replace("play", "")
+            tts.tospeech("Searching for " + query + " on YouTube.")
+            video_url = get_youtube_video_link(query, "AIzaSyB-yNBJbIUVMcWyPq9W4BKXYIoSPr3Mql0")
+            if video_url:
+                tts.tospeech("Playing " + query + " on YouTube.")
+                open_website(video_url)
+            else:
+                tts.tospeech("No videos found for " + query + " on YouTube.")
         elif "you tube" in text or "youtube" in text:
 
             query = text.lower().replace("you tube","").replace("youtube","")
@@ -54,6 +63,18 @@ def main():
             query = text.lower().replace("on bing","").replace("bing","")
             tts.tospeech("Searching for " + query + " on the browser  Bing")
             search_on_bing(query)
+        elif "play" in text:
+            query = text.lower().replace("play", "")
+            tts.tospeech("Searching for " + query + " on YouTube.")
+            video_url = get_youtube_video_link(query, "AIzaSyB-yNBJbIUVMcWyPq9W4BKXYIoSPr3Mql0")
+            if video_url:
+                tts.tospeech("Playing " + query + " on YouTube.")
+                open_website(video_url)
+            else:
+                tts.tospeech("No videos found for " + query + " on YouTube.")
+                
+        
+        
         else:
             tts.tospeech("Let me search for that.")
             gpt_prompt = "What can you tell me about do not include ** in any sentence give only a paragraph " + text
