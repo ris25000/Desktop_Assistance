@@ -1,6 +1,10 @@
 from googleapiclient.discovery import build
 
 def get_youtube_video_link(video_name, api_key):
+# Searches for a video on YouTube based on the provided video name and returns the URL of the first search result.
+# Args:video_name (str): The name of the video to search for.
+# api_key (str): The YouTube Data API key for authentication.
+# Returns:str or None: The URL of the first search result if found, else None."""
     youtube = build('youtube', 'v3', developerKey=api_key)
 
     # Search for videos with the given name
