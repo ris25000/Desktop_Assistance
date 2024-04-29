@@ -1,2 +1,8 @@
 pyttsx3==2.90
 pandas
+webbrowser
+g4f
+SpeechRecognition
+google-api-python-client
+subprocess
+openai
