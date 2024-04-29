@@ -1,10 +1,10 @@
-from SpeechToText import SpeechToText
-from TextToSpeech import TextToSpeech
-from Utilities import *
-from gpt_response1 import gpt_response
+from utilities.SpeechToText import SpeechToText
+from utilities.TextToSpeech import TextToSpeech
+from utilities.Utilities import *
+from utilities.gpt_response1 import gpt_response
 from g4f.client import Client
 from googleapiclient.discovery import build
-from youtube_search import get_youtube_video_link
+from utilities.youtube_search import get_youtube_video_link
 import webbrowser
 
 

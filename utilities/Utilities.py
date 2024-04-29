@@ -4,7 +4,8 @@ import speech_recognition as sr
 import webbrowser
 import datetime
 import subprocess
-from SpeechToText import SpeechToText
+from .SpeechToText import SpeechToText
+
 import webbrowser
 import urllib.parse
 
