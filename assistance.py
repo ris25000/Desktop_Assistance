@@ -8,9 +8,6 @@ from utilities.youtube_search import get_youtube_video_link
 import webbrowser
 
 
-
-
-
 def main():
     stt = SpeechToText()
     tts = TextToSpeech()
@@ -67,6 +64,7 @@ def main():
             tts.tospeech("The current time is " + current_time_str)
         
         elif "close" in text:
+            tts.tospeech(" Thank you for Using  have a  nice   day ")
             break
         elif "bing" in text or "being" in text:
             query = text.lower().replace("on bing","").replace("bing","")
